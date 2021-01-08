@@ -1,2 +1,2 @@
-# tv-show-manager
-reads tv show details
+# tv-show-organaizer
+Organaizes TV Shows
