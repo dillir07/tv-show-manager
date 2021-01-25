@@ -49,7 +49,8 @@ for file in files:
         tvmaze_id, season, episode)
 
     file_name = Path(file)
+    season_info = "S{}E{}-".format(season, episode)
 
     os.renames(season_folder / file_name,
                season_folder / Path("Season " +
-                                    str(season)) / Path(get_legal_chars(episode_name) + "." + file_name.suffix))
+                                    str(season)) / Path(get_legal_chars(season_info + episode_name) + "." + file_name.suffix))
