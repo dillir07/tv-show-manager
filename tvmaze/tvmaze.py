@@ -1,4 +1,5 @@
 import urllib.request
+from urllib.parse import quote
 from jsontraverse.parser import JsonTraverseParser
 
 
@@ -12,7 +13,8 @@ def search_tv_show(tv_show_name: str):
         tuple: tvmaze_id, imdb_id, name, language, genres, poster_url, summary
     """
 
-    api_url = "http://api.tvmaze.com/search/shows?q=%s" % tv_show_name
+    api_url = "http://api.tvmaze.com/search/shows?q={}".format(
+        quote(tv_show_name))
     with urllib.request.urlopen(api_url) as tv_show_search_results:
         list_of_search_results = eval(tv_show_search_results.read()
                                       .decode().replace(

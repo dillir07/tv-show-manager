@@ -1,6 +1,7 @@
 import os
 import sys
 from pathlib import Path
+
 import re
 
 from tvmaze.tvmaze import search_tv_show, search_episode
