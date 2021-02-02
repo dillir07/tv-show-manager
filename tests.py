@@ -1,10 +1,6 @@
-import re
-
-pattern = '(s|season)[0-9].'
-test_string = 'friends.s02e08'
-result = re.search(pattern, test_string)
-
-if result:
-    print(result.group())
-else:
-    print("Search unsuccessful.")
+from jsontraverse.parser import JsonTraverseParser
+import urllib.request
+x = None
+with urllib.request.urlopen("https://api.tvmaze.com/shows/27436/seasons") as f:
+    x = JsonTraverseParser(f.read().decode())
+print(x)

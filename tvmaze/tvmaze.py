@@ -7,14 +7,17 @@ def search_tv_show(tv_show_name: str):
     """searches for a tvshow with name and returns it's details
 
     Args:
+    -----
         tv_show_name (str): name of the tv show ex: friends
 
     Returns:
+    --------
         tuple: tvmaze_id, imdb_id, name, language, genres, poster_url, summary
     """
 
     api_url = "http://api.tvmaze.com/search/shows?q={}".format(
         quote(tv_show_name))
+    print(api_url)
     with urllib.request.urlopen(api_url) as tv_show_search_results:
         list_of_search_results = eval(tv_show_search_results.read()
                                       .decode().replace(
@@ -35,16 +38,19 @@ def search_episode(tvmaze_id: str, season_number: int, episode_number: int):
     """Searches episode with tvmaze and returns the details of the episode
 
     Args:
-        tvmaze_id (str): tv maze id
-        season_number (int): season number
-        episode_number (int): episode number
+    -----
+    - tvmaze_id (str): tv maze id
+    - season_number (int): season number
+    - episode_number (int): episode number
 
     Returns:
+    --------
         tuple: name, aired_year, poster_url, summary
     """
     api_url = "http://api.tvmaze.com/shows/{tvmaze_id}/episodebynumber?season={season_number}&number={episode_number}".format(
         tvmaze_id=tvmaze_id, season_number=season_number,
         episode_number=episode_number)
+    print(api_url)
     with urllib.request.urlopen(api_url) as search_result:
         list_of_search_results = eval(search_result.read().decode().replace(
             "null", "None"))
